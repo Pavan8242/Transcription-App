@@ -1,38 +1,350 @@
+/* src/App.css */
+
+/* ===================================================
+   General Styles
+=================================================== */
+
+/* Root container styling */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  background-color: #383838; /* Dark background */
+  color: #333333; /* Dark Charcoal */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header styling */
+.App-header {
+  display: flex;
+  justify-content: left; /* Align to the left */
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  background-color: #8f90c4; /* Professional Blue */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #357ABD; /* Darker Blue */
 }
 
-.App-link {
-  color: #61dafb;
+/* Application Title */
+.App-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #FFFFFF; /* White */
+  font-weight: 700; /* Bold */
+  text-transform: capitalize; /* Uppercase */
+  letter-spacing: 1.5px; /* Spacing between letters */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Subheading */
+.App-subheader {
+  font-size: 1.2rem;
+  color: #FFFFFF; /* White */
+  margin-top: 10px; /* Space between title and subheading */
+  text-align: left; /* Align to the left */
+}
+
+/* Main content area */
+.App-main {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  padding: 20px;
+  flex: 1; /* Take up remaining space */
+}
+
+/* Microphone button container */
+.microphone {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  margin-top: 20px; /* Add space between heading and button */
+}
+
+/* ===================================================
+   Transcription Box Styles
+=================================================== */
+.transcription-box {
+  width: 100%;
+  max-width: 800px;
+  height: 300px;
+  padding: 20px;
+  background-color: #000000; /* Black */
+  border: 1px solid #463e3e; /* Light Gray */
+  border-radius: 8px;
+  margin-top: 20px;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  align-self: center; /* Center the transcription box */
+  margin: 20px auto; /* Center the box horizontally and add vertical margin */
+}
+
+.transcription-box-border {
+  border: 2px solid #524d4d; /* Adjust the color and width as needed */
+  padding: 10px; /* Adjust the padding as needed */
+}
+
+/* Header for the transcription box */
+.transcription-header {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #FFFFFF; /* White */
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 10px;
+}
+
+/* Loading indicator styling */
+.loading-indicator {
+  font-size: 1rem;
+  color: #888888; /* Gray */
+  margin-bottom: 10px;
+}
+
+/* Transcription text area */
+.transcription-text {
+  font-size: 1rem;
+  color: #ADD8E6; /* Light Blue */
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #000000; /* Black */
+  border: 1px solid #463e3e; /* Light Gray */
+  border-radius: 5px;
+  flex: 1;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box; /* Ensure border is included in the element's total width and height */
+}
+
+/* Placeholder text styling */
+.placeholder-text {
+  font-size: 1rem;
+  color: #AAAAAA; /* Light Gray */
+  font-style: italic;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Error message styling */
+.error-text {
+  font-size: 1rem;
+  color: #ff4d4d; /* Red */
+  margin-top: 10px;
+}
+
+/* ===================================================
+   History Box Styles
+=================================================== */
+.history-box {
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+  background-color: #B2FFFC; /* Mint Green */
+  border: 1px solid #DDDDDD; /* Light Gray */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.history-toggle-button {
+  background-color: #28a745; /* Green */
+  color: #FFFFFF; /* White */
+  padding: 8px 16px;
+  border: 2px solid #1e7e34; /* Darker Green */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.history-toggle-button:hover {
+  background-color: #218838; /* Dark Green */
+  color: #FFFFFF; /* White */
+}
+
+.history-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.history-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #B2FFFC; /* Mint Green */
+  border: 1px solid #DDDDDD; /* Light Gray */
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.history-item audio {
+  width: 100%; /* Full width */
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.history-item p {
+  font-size: 0.95rem;
+  color: #555555; /* Medium Gray */
+}
+
+/* ===================================================
+   Start Recording Button Styles
+=================================================== */
+.record-button {
+  background-color: #28a745; /* Green */
+  color: #FFFFFF; /* White */
+  padding: 12px 24px;
+  border: 2px solid #1e7e34; /* Darker Green */
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.record-button.recording {
+  background-color: #28a745; /* Green indicating recording */
+  border-color: #1e7e34;
+  color: #FFFFFF;
+}
+
+.record-button.not-recording {
+  background-color: #28a745; /* Green */
+  border-color: #1e7e34;
+  color: #FFFFFF; /* White */
+}
+
+.record-button:hover {
+  background-color: #218838; /* Dark Green */
+  color: #FFFFFF; /* White */
+}
+
+.recording-indicator {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #ff4d4d; /* Red */
+}
+
+/* ===================================================
+   Responsive Design
+=================================================== */
+
+/* Tablets and Small Desktops */
+@media (max-width: 1024px) {
+  .App-header h1 {
+    font-size: 2rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .App-header p {
+    font-size: 1rem;
   }
+
+  .transcription-box,
+  .history-box {
+    max-width: 90%;
+  }
+
+  .transcription-header {
+    font-size: 1.5rem;
+  }
+
+  .transcription-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .App-header p {
+    font-size: 0.9rem;
+  }
+
+  .transcription-box,
+  .history-box {
+    max-width: 95%;
+    padding: 15px;
+  }
+
+  .transcription-header {
+    font-size: 1.3rem;
+  }
+
+  .transcription-text {
+    font-size: 0.9rem;
+  }
+
+  .history-toggle-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  .placeholder-text {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .App-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .App-header p {
+    font-size: 0.8rem;
+  }
+
+  .transcription-box,
+  .history-box {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .transcription-header {
+    font-size: 1.1rem;
+  }
+
+  .transcription-text {
+    font-size: 0.85rem;
+  }
+
+  .history-toggle-button {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+
+  .placeholder-text {
+    font-size: 0.8rem; /* Smaller font size for very small screens */
+  }
+
+  /* Adjust toggle switch size */
+  .slider {
+    width: 40px;
+    height: 20px;
+  }
+
+  .slider::before {
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+  }
+
+  input:checked + .slider::before {
+    transform: translateX(20px);
+  }
+}
+
+/* Metadata display styles */
+.metadata {
+  font-size: 0.9rem;
+  color: #888888; /* Gray */
+  margin-top: 5px;
 }
